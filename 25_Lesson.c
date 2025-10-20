@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "ctype.h"
+#include <stdlib.h>
 
 #define SIZE 100
+
+#define STR_SIZE 1024
 
 bool isUpper(char c);
 
@@ -15,6 +18,8 @@ bool isAlNum(char c); // True if the character is a letter or a digit
 char toLower(char c);
 
 char toUpper(char c);
+
+int my_strlen(const char* str);
 
 int main(void){
 
@@ -35,11 +40,14 @@ int main(void){
 
     fgets(str, SIZE - 1, stdin);
 
+    /*char *str = get_string("Enter the string: "); TRY TO FIX */
+
     // Print the string.
 
     puts("Printing with printf");
 
     printf("%s\n\n", str); 
+    printf("String size: %d\n", my_strlen(str));
 
     puts("Printing with a loop");
 
@@ -124,3 +132,26 @@ char toUpper(char c){
         return c;
     }
 }
+
+int my_strlen(const char* str){
+    int i = 0;
+    while(str[i] != '\0' && i < STR_SIZE){
+        i++;
+    }
+    return i;
+}
+
+/*char* get_string(const char* prompt){
+    printf("%s", prompt);
+    char *str = (char*) malloc(sizeof(char) * STR_SIZE);
+
+    char input;
+    int i = 0;
+    while (i < STR_SIZE - 1 && (input = getchar()) != '\n'){
+        str[i] = input;
+        i++;
+    }
+    // Add null character at the end.
+    str[i] = '\0';
+    return str;
+} TRY TO FIX */
