@@ -10,6 +10,11 @@ struct student{
     int age;
 };
 
+
+// TODO
+// Add Last name
+// Add state
+
 typedef struct student Student;
 
 void printStudent(struct student *st);
